@@ -1,16 +1,14 @@
 'use strict';
 
-// --> object <--
+//* --> object <--
 import coordinates from './store/coordRoom.js';
 
-// --> import <--
+//* --> class <--
 import Room from './room.js';
-import _isOutside from './methodes/isOutside.js';
+import Move from './moveMob.js';
 
-// --> call <--
-let room = new Room(coordinates[0], 100);
+//* --> call <--
+let room = new Room(coordinates[1], 100);
 room._addElem();
 
-window.addEventListener('mousemove', (e) => {
-    document.body.style.background = _isOutside(e.clientX, e.clientY) ? '#0000' : 'red';
-});
+new Move(500); //interval above moving
