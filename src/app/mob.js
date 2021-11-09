@@ -1,13 +1,13 @@
 import Room from "./room.js";
 import MathArr from "./methods/mathArr.js";
-import mobStyle from "./store/mob.js";
+import mobData from "./store/mobData.js";
 import _isOutside from "./methods/isOutside.js";
 
 export default class Move {
     constructor(interval) {
         this.interval = interval;
-        this.mobWidth = mobStyle.style.width,
-            this.mobHeight = mobStyle.style.height;
+        this.mobWidth = parseInt(mobData.style.width),
+            this.mobHeight = parseInt(mobData.style.height);
         this.__init__();
     }
 
@@ -18,14 +18,23 @@ export default class Move {
 
     _createMob() {
         this.mob = document.createElement('span');
-        this.mob.style.cssText = `
-            position: absolute;
-            border-radius: 50%;
-            transition: 0.5s left, 0.5s top;
-            ${mobStyle._getContent()}
-        `;
+        this.mob.id = mobData.feature.name;
+        this._insertRule();
 
         document.body.append(this.mob);
+    }
+
+    _insertRule() {
+        const style = document.createElement('style');
+        style.id = `${mobData.feature.name}Style`;
+        document.head.append(style);
+
+        style.sheet.insertRule(`
+            #${mobData.feature.name} {
+                position: absolute;
+                ${mobData._getContent()}
+            }
+        `, style.sheet.cssRules.length)
     }
 
     _setInterval() {
