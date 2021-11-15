@@ -4,11 +4,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* pointer-events: none; */
-}
-
-:root {
-    --sizeRoom: 100px; 
 }
 
 body {
@@ -17,10 +12,4 @@ body {
     align-items: center;
     width: 100vw;
     min-height: 100vh;
-}
-
-.room {
-    background: #ccc;
-    width: var(--sizeRoom);
-    height: var(--sizeRoom);
 }

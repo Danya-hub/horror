@@ -1,4 +1,4 @@
-export default class MathArr {
+export default window.MathArr = class {
     constructor() {}
 
     static Max(arr) {

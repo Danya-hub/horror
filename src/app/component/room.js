@@ -1,9 +1,9 @@
-import MathArr from "./methods/mathArr.js"
+import _getStyleFromObject from '../methods/getStyleFromObject.js';
 
-export default class Room {
+export default window.window.Room = class {
     constructor(room, size) {
         this.coordinates = room,
-            Room.size = size;
+            window.Room.size = size;
         this.__init__();
     }
 
@@ -13,32 +13,30 @@ export default class Room {
     }
 
     _createElem() {
-        this.room = document.createElement('div');
-        this.room.className = 'room',
-            this.room.style.cssText = `width: ${Room.size}px; height: ${Room.size}px;`;
+        this.elem = document.createElement('div');
+        this.elem.id = `room${window.Room.id++}`,
+            this.elem.style.cssText = _getStyleFromObject(window.AreaData.room.style);
 
         let content = '';
         this.coordinates.forEach((coord, i) => content += coord.map(e => e + '%').join('') + (i < this.coordinates.length - 1 ? ',' : ''));
-        this.room.style.clipPath = `polygon(${content})`;
+        this.elem.style.clipPath = `polygon(${content})`;
     }
 
     _setCoordByWindow() {
         let sBody = [document.body.offsetWidth, document.body.offsetHeight];
         
         this.axis = ['x', 'y']
-        Room.coordByWindow = this.coordinates.map(coord => {
+        window.Room.coordByWindow = this.coordinates.map(coord => {
             let obj = {};
-            coord.forEach((e, i) => obj[this.axis[i]] = (e / 100) * Room.size + (sBody[i] / 2) - (Room.size / 2));
+            coord.forEach((e, i) => obj[this.axis[i]] = (e / 100) * window.Room.size + (sBody[i] / 2) - (window.Room.size / 2));
             return obj;
         });
     }
 
-    _addElem() {
-        document.body.append(this.room);
-    }
-
     //* --> static <--
     // --> set <--
+
+    static id = 0; 
 
     static set Size(value) {
         this.size = value;
@@ -67,18 +65,18 @@ export default class Room {
     }
 
     static get minX() {
-        return MathArr.Min(Room.X);
+        return window.MathArr.Min(window.Room.X);
     }
 
     static get maxX() {
-        return MathArr.Max(Room.X)
+        return window.MathArr.Max(window.Room.X)
     }
 
     static get minY() {
-        return MathArr.Min(Room.Y);
+        return window.MathArr.Min(window.Room.Y);
     }
 
     static get maxY() {
-        return MathArr.Max(Room.Y);
+        return window.MathArr.Max(window.Room.Y);
     }
 }

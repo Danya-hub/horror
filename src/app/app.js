@@ -1,15 +1,20 @@
 'use strict';
 
-//* --> object <--
-import coordinates from './store/coordRoom.js';
-import mobData from "./store/mobData.js";
+import Aside from "./component/aside.js";
+import Main from "./component/main.js";
 
-//* --> class <--
-import Room from './room.js';
-import Move from './mob.js';
+//* --> data <--
+import './store/areaData.js';
+import './store/mobData.js';
+
+//* --> Global <--
+import './methods/mathArr.js';
+import './methods/insertStyleRule.js'
+import './component/room.js';
+import './component/area.js';
 
 //* --> call <--
-let room = new Room(coordinates[1], 100);
-room._addElem();
+new Aside();
+new Main();
 
-new Move(mobData.feature.intervalMove); //interval above moving
+console.log('#mob'.match(/^[#, \.]+/)) //?!!!
