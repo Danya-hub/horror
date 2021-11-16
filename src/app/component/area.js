@@ -1,4 +1,4 @@
-import _getStyleFromObject from "../methods/getStyleFromObject.js";
+import _getStyleFromObject from '../methods/getStyleFromObject.js';
 
 export default window.Area = class {
     constructor() {
@@ -12,9 +12,5 @@ export default window.Area = class {
     _createElem() {
         this.elem = document.createElement('div');
         this.elem.style.cssText = _getStyleFromObject(window.AreaData.area.style);
-    }
-
-    _addHtmlContent(child) {
-        this.elem.innerHTML += child.outerHTML;
     }
 }

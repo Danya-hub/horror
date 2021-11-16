@@ -1,21 +1,28 @@
 import _getStyleFromObject from '../methods/getStyleFromObject.js';
+import _insertStyleRule from '../methods/insertStyleRule.js';
 
 export default window.window.Room = class {
-    constructor(room, size) {
-        this.coordinates = room,
-            window.Room.size = size;
+    constructor(room) {
+        this.coordinates = room;  
         this.__init__();
     }
 
     __init__() {
+        window.Room.size = parseFloat(window.AreaData.room.style.size);
+
         this._setCoordByWindow();
         this._createElem();
     }
 
     _createElem() {
-        this.elem = document.createElement('div');
-        this.elem.id = `room${window.Room.id++}`,
-            this.elem.style.cssText = _getStyleFromObject(window.AreaData.room.style);
+        this.elem = document.createElement('div'),
+            this.elem.id = window.Room.id++,
+            this.elem.className = 'room';
+
+        _insertStyleRule(
+            `.${this.elem.className}`,
+            _getStyleFromObject(window.AreaData.room.style)
+        );
 
         let content = '';
         this.coordinates.forEach((coord, i) => content += coord.map(e => e + '%').join('') + (i < this.coordinates.length - 1 ? ',' : ''));
@@ -24,8 +31,8 @@ export default window.window.Room = class {
 
     _setCoordByWindow() {
         let sBody = [document.body.offsetWidth, document.body.offsetHeight];
-        
-        this.axis = ['x', 'y']
+
+        this.axis = ['x', 'y'];
         window.Room.coordByWindow = this.coordinates.map(coord => {
             let obj = {};
             coord.forEach((e, i) => obj[this.axis[i]] = (e / 100) * window.Room.size + (sBody[i] / 2) - (window.Room.size / 2));
@@ -34,9 +41,10 @@ export default window.window.Room = class {
     }
 
     //* --> static <--
-    // --> set <--
+    
+    static id = 0;
 
-    static id = 0; 
+    // --> set <--
 
     static set Size(value) {
         this.size = value;

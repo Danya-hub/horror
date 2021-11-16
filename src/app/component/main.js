@@ -13,12 +13,15 @@ export default class {
         this.room = new window.Room(coordinates[1]);
         this.mob = new Mob(window.mobData.feature.intervalMove);
 
+        //? - - - - - - - - - - - - - -
+        this.area.elem.append(this.room.elem);
+        this.room.elem.append(this.mob.elem);
+
         this.main.append(this.area.elem);
-        this.area._addHtmlContent(this.room.elem); 
     }
 
     _setSubComponents() {
-
+        
     }
 
     _createElem() {

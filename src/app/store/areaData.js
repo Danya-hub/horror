@@ -5,16 +5,14 @@ export default window.AreaData = {
         className: 'area',
         style: {
             position: 'relative',
-            width: `${sizeWindow}px`,
-            height: `${sizeWindow}px`,
+            size: `${sizeWindow}px`,
         }
     },
     room: {
         className: 'room',
         style: {
             position: 'absolute',
-            width: `${sizeWindow * 0.2}px`,
-            height: `${sizeWindow * 0.2}px`,
+            size: `${sizeWindow * 0.2}px`,
             background: '#ccc',
         }
     }
