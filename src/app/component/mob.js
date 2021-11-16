@@ -19,7 +19,7 @@ export default class Move {
         this.elem.id = window.mobData.feature.name;
 
         _insertStyleRule(
-            `#${window.mobData.feature.name}`, 
+            `#${window.mobData.feature.name}`,
             _getStyleFromObject(window.mobData.style)
         );
 
@@ -28,13 +28,19 @@ export default class Move {
 
     _setInterval() {
         setInterval(() => {
-            let randX = window.MathArr.Random(window.Room.minX + this.mobSize, window.Room.maxX - this.mobSize),
-                randY = window.MathArr.Random(window.Room.minY + this.mobSize, window.Room.maxY - this.mobSize);
+            let randX = window.MathArr.Random(
+                    window.Room.minX + (this.mobSize * 100) / window.Room.maxX * 2,
+                    window.Room.maxX - (this.mobSize * 100) / window.Room.maxX * 2
+                ),
+                randY = window.MathArr.Random(
+                    window.Room.minY + (this.mobSize * 100) / window.Room.maxY * 2,
+                    window.Room.maxY - (this.mobSize * 100) / window.Room.maxY * 2
+                );
 
             if (!_isOutside(randX, randY))
                 this.elem.style.cssText = `
-                    left: ${randX}px;
-                    top: ${randY}px;
+                    left: ${randX}%;
+                    top: ${randY}%;
                 `;
         }, this.interval);
     }

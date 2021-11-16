@@ -30,12 +30,10 @@ export default window.window.Room = class {
     }
 
     _setCoordByWindow() {
-        let sBody = [document.body.offsetWidth, document.body.offsetHeight];
-
         this.axis = ['x', 'y'];
         window.Room.coordByWindow = this.coordinates.map(coord => {
             let obj = {};
-            coord.forEach((e, i) => obj[this.axis[i]] = (e / 100) * window.Room.size + (sBody[i] / 2) - (window.Room.size / 2));
+            coord.forEach((e, i) => obj[this.axis[i]] = e);
             return obj;
         });
     }
