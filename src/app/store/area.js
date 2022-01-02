@@ -1,11 +1,14 @@
-const sizeWindow = Math.min(window.innerWidth, window.innerHeight) * 0.9;
+const percent = 0.7,
+    space = 20;
 
-export default window.AreaData = {
+const sizeWindow = Math.min(innerWidth * percent, innerHeight) - space * 2;
+
+export default Object.prototype.AreaData = {
     area: {
         className: 'area',
         style: {
-            position: 'relative',
             size: `${sizeWindow}px`,
+            margin: `${space}px`,
         }
     },
     room: {
@@ -13,7 +16,9 @@ export default window.AreaData = {
         style: {
             position: 'absolute',
             size: `${sizeWindow * 0.2}px`,
-            background: '#ccc',
+        },
+        polygon: {
+            fill: '#ccc',
         }
     }
 }

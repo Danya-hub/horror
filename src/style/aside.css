@@ -1,0 +1,17 @@
+aside #switchRooms {
+    display: flex;
+    flex-wrap: wrap;
+} 
+
+aside button {
+    position: relative;
+    transition: 0.2s transform;
+    margin: 10px;
+    width: 34px;
+    height: 34px;
+    border-radius: 4px;
+}
+
+aside button:hover {
+    transform: scale(1.1);
+}

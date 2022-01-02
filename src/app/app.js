@@ -1,17 +1,21 @@
 'use strict';
 
+//? --> rule <--
+import './rule/mode.js';
+
+//? --> store <--
+import './store/index.js'
+
+//? --> global <--
+import './methods.js';
+import './template.js';
+
+//? --> component <--
+import './component/area.js';
+import './component/UI/room.js';
+
 import Aside from './component/aside.js';
 import Main from './component/main.js';
-
-//* --> data <--
-import './store/areaData.js';
-import './store/mobData.js';
-
-//* --> Global <--
-import './methods/mathArr.js';
-import './methods/insertStyleRule.js'
-import './component/room.js';
-import './component/area.js';
 
 //* --> call <--
 new Aside();
